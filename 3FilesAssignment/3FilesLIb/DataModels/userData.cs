@@ -11,6 +11,14 @@ namespace _3FilesAssignment.DataModels
         public string LastName { get; set; }
         public string FirstName { get; set; }
         public string Gender { get; set; }
+        public string gender
+        {
+            get
+            {
+                return Gender;
+            }
+        }
+
         public string FavoriteColor { get; set; }
         public DateTime DateOfBirth {
             get
@@ -18,6 +26,23 @@ namespace _3FilesAssignment.DataModels
                 return DateTime.Parse(sDateOfBirth);
             }
         }
+
+        public DateTime birthdate
+        {
+            get
+            {
+                return DateTime.Parse(sDateOfBirth);
+            }
+        }
+
+        public string name
+        {
+            get
+            {
+                return LastName +" "+ FirstName;
+            }
+        }
+
         public string sDateOfBirth { get; set; }
         
 

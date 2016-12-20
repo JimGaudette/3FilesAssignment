@@ -65,7 +65,7 @@ namespace _3FilesAssignmentTester
             // test for females first and last name acending
             var out1Data=outProcessor.ArrangeDataforOutput1();
 
-            Assert.AreEqual(out1Data[0].Gender, "female");
+            Assert.AreEqual(out1Data[0].Gender, "Female");
             Assert.AreEqual(out1Data[1].LastName, "1gaudette");
 
             // test for sorted by birthday 

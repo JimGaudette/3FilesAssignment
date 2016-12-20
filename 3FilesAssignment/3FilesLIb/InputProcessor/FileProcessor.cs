@@ -69,7 +69,7 @@ namespace _3FilesAssignment
                     string inputLine = "";
                     while ((inputLine = reader.ReadLine()) != null)
                     {
-                        if (!IsRecordValid(inputLine))
+                        if (!IsRecordValidWithParser(inputLine, ParseCharacter))
                         {
                             isValid = false;
                             break;
@@ -100,22 +100,23 @@ namespace _3FilesAssignment
                 string inputLine = "";
                 while ((inputLine = reader.ReadLine()) != null)
                 {
-                    dataList.Add(ProcessLine(inputLine));
+                    dataList.Add(ProcessLine(inputLine, ParseCharacter));
                 }
             }
 
             return dataList;
         }
 
+      
         /// <summary>
         /// this checks to see if the current input string can be parsed to return a complete record using the current parsing character
         /// </summary>
         /// <param name="recordData"></param>
         /// <returns></returns>
 
-        private bool IsRecordValid(string recordData)
+        public static bool IsRecordValidWithParser(string recordData, char parsingCharacter)
         {
-            int commaCount = recordData.Count(ch => ch == ParseCharacter);
+            int commaCount = recordData.Count(ch => ch == parsingCharacter);
             if (commaCount == 4)
                 return true;
             return false;
@@ -127,9 +128,9 @@ namespace _3FilesAssignment
         /// </summary>
         /// <param name="recordData"></param>
         /// <returns> a data model with the data fields containing the data obtained from the file</returns>
-        private UserData ProcessLine(string recordData)
+        public static UserData ProcessLine(string recordData, char parseChar)
         {
-            var parts = recordData.Split(ParseCharacter);
+            var parts = recordData.Split(parseChar);
             var userData = new UserData
             {
                 FirstName = parts[1].Trim(),

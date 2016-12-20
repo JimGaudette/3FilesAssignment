@@ -50,6 +50,7 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="RESTProcessorTests.cs" />
     <Compile Include="OutputTests.cs" />
     <Compile Include="FileProcessorTests.cs" />
     <Compile Include="UnitTest1.cs" />
@@ -59,6 +60,10 @@
     <ProjectReference Include="..\3FilesAssignment\3FilesAssignment.csproj">
       <Project>{0c6eca11-e469-43ea-b690-19cf53296cbc}</Project>
       <Name>3FilesAssignment</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\3FilesLIb\3FilesLIb.csproj">
+      <Project>{fad9f6e6-b26e-4dd8-88aa-b89f8dfbabbc}</Project>
+      <Name>3FilesLIb</Name>
     </ProjectReference>
   </ItemGroup>
   <Choose>
