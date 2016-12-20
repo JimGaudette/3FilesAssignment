@@ -21,28 +21,28 @@ namespace _3FilesAssignmentTester
  
             using (StreamWriter writer = File.CreateText("OutputTestsspaceFile.txt"))
             {
-                writer.WriteLine("1gaudette james Male brown 04/25/1971");
-                writer.WriteLine("2gaudette jimmy Male red 11/15/2012");
-                writer.WriteLine("3gaudette pierce Male red 11/15/2012");
-                writer.WriteLine("4gaudette kady Female red 11/15/2006");
+                writer.WriteLine("ot11gaudette james Male brown 04/25/1971");
+                writer.WriteLine("ot12gaudette jimmy Male red 11/15/2012");
+                writer.WriteLine("ot13gaudette pierce Male red 11/15/2012");
+                writer.WriteLine("ot14gaudette kady Female red 11/15/2006");
             }
 
             using (StreamWriter writer = File.CreateText("OutputTestscommaFile.txt"))
             {
-                writer.WriteLine("1gaudette,james,Male,brown,04/25/1971");
-                writer.WriteLine("2gaudette,jimmy,Male,red,11/15/2012");
-                writer.WriteLine("3gaudette,pierce,Male,red,11/15/2012");
-                writer.WriteLine("4gaudette,kady,Female,red,11/15/2006");
+                writer.WriteLine("ot21gaudette,james,Male,brown,04/25/1971");
+                writer.WriteLine("ot22gaudette,jimmy,Male,red,11/15/2012");
+                writer.WriteLine("ot23gaudette,pierce,Male,red,11/15/2012");
+                writer.WriteLine("ot24gaudette,kady,Female,red,11/15/2006");
             }
 
 
 
             using (StreamWriter writer = File.CreateText("OutputTestspipeFile.txt"))
             {
-                writer.WriteLine("1gaudette|james|Male|brown|04/25/1971");
-                writer.WriteLine("2gaudette|jimmy|Male|red|11/15/2012");
-                writer.WriteLine("3gaudette|pierce|Male|red|11/15/2012");
-                writer.WriteLine("4gaudette|kady|Female|red|11/15/2006");
+                writer.WriteLine("ot31gaudette|james|Male|brown|04/25/1971");
+                writer.WriteLine("ot32gaudette|jimmy|Male|red|11/15/2012");
+                writer.WriteLine("ot33gaudette|pierce|Male|red|11/15/2012");
+                writer.WriteLine("ot34gaudette|kady|Female|red|11/15/2006");
             }
 
         }
@@ -58,25 +58,29 @@ namespace _3FilesAssignmentTester
         [TestMethod]
         public void OutputConsoleTests()
         {
-            var myData = new FileProcessor("OutputTestscommaFile.txt").ProcessFile();
+            var myfileProcessor = new FileProcessor();
+            myfileProcessor.AddFile("OutputTestsspaceFile.txt");
+            myfileProcessor.AddFile("OutputTestscommaFile.txt");
+            myfileProcessor.AddFile("OutputTestspipeFile.txt");
 
-            var outProcessor = new ConsoleOutputProcessor(myData);
+
+            var outProcessor = new ConsoleOutputProcessor(myfileProcessor._dataList);
 
             // test for females first and last name acending
             var out1Data=outProcessor.ArrangeDataforOutput1();
 
-            Assert.AreEqual(out1Data[0].Gender, "Female");
-            Assert.AreEqual(out1Data[1].LastName, "1gaudette");
+            
+            Assert.AreEqual(out1Data[0].LastName, "ot14gaudette");
 
             // test for sorted by birthday 
             var out2Data = outProcessor.ArrangeDataforOutput2();
 
-            Assert.AreEqual(out2Data[1].FirstName, "kady");
+            Assert.AreEqual(out2Data[0].LastName, "ot11gaudette");
 
             // test for sorted by last name descending 
             var out3Data = outProcessor.ArrangeDataforOutput3();
 
-            Assert.AreEqual(out3Data[0].LastName, "4gaudette");
+            Assert.AreEqual(out3Data[0].LastName, "ot34gaudette");
 
 
 

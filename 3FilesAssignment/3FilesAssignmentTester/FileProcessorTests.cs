@@ -21,28 +21,28 @@ namespace _3FilesAssignmentTester
  
             using (StreamWriter writer = File.CreateText("FileProcessorTestsspaceFile.txt"))
             {
-                writer.WriteLine("gaudette james Male brown 04/25/1971");
-                writer.WriteLine("gaudette jimmy Male red 11/15/2012");
-                writer.WriteLine("gaudette pierce Male red 11/15/2012");
-                writer.WriteLine("gaudette kady female red 11/15/2012");
+                writer.WriteLine("FP1gaudette james Male brown 04/25/1971");
+                writer.WriteLine("FP1gaudette jimmy Male red 11/15/2012");
+                writer.WriteLine("FP1gaudette pierce Male red 11/15/2012");
+                writer.WriteLine("FP1gaudette kady female red 11/15/2012");
             }
 
             using (StreamWriter writer = File.CreateText("FileProcessorTestscommaFile.txt"))
             {
-                writer.WriteLine("gaudette,james,Male,brown,04/25/1971");
-                writer.WriteLine("gaudette,jimmy,Male,red,11/15/2012");
-                writer.WriteLine("gaudette,pierce,Male,red,11/15/2012");
-                writer.WriteLine("gaudette,kady,female,red,11/15/2012");
+                writer.WriteLine("FP2gaudette,james,Male,brown,04/25/1971");
+                writer.WriteLine("FP2gaudette,jimmy,Male,red,11/15/2012");
+                writer.WriteLine("FP2gaudette,pierce,Male,red,11/15/2012");
+                writer.WriteLine("FP2gaudette,kady,female,red,11/15/2012");
             }
 
 
 
             using (StreamWriter writer = File.CreateText("FileProcessorTestspipeFile.txt"))
             {
-                writer.WriteLine("gaudette|james|Male|brown|04/25/1971");
-                writer.WriteLine("gaudette|jimmy|Male|red|11/15/2012");
-                writer.WriteLine("gaudette|pierce|Male|red|11/15/2012");
-                writer.WriteLine("gaudette|kady|female|red|11/15/2012");
+                writer.WriteLine("FP3gaudette|james|Male|brown|04/25/1971");
+                writer.WriteLine("FP3gaudette|jimmy|Male|red|11/15/2012");
+                writer.WriteLine("FP3gaudette|pierce|Male|red|11/15/2012");
+                writer.WriteLine("FP3gaudette|kady|female|red|11/15/2012");
             }
 
         }
@@ -58,20 +58,17 @@ namespace _3FilesAssignmentTester
         [TestMethod]
         public void ParseCharacterIdentificationTests()
         {
-            var myfileProcessor = new FileProcessor("FileProcessorTestsspaceFile.txt");
-            myfileProcessor.DetermineParseCharacter();
+            var myfileProcessor = new FileProcessor();
 
-            Assert.AreEqual(myfileProcessor.ParseCharacter,' ');
+            var parseChar= myfileProcessor.DetermineParseCharacter("FileProcessorTestsspaceFile.txt");
+            Assert.AreEqual(parseChar, ' ');
 
-            myfileProcessor = new FileProcessor("FileProcessorTestscommaFile.txt");
-            myfileProcessor.DetermineParseCharacter();
+            parseChar = myfileProcessor.DetermineParseCharacter("FileProcessorTestscommaFile.txt");
+            Assert.AreEqual(parseChar, ',');
 
-            Assert.AreEqual(myfileProcessor.ParseCharacter, ',');
+            parseChar = myfileProcessor.DetermineParseCharacter("FileProcessorTestspipeFile.txt");
+            Assert.AreEqual(parseChar, '|');
 
-            myfileProcessor = new FileProcessor("FileProcessorTestspipeFile.txt");
-            myfileProcessor.DetermineParseCharacter();
-
-            Assert.AreEqual(myfileProcessor.ParseCharacter, '|');
 
         }
 
@@ -79,10 +76,13 @@ namespace _3FilesAssignmentTester
         [TestMethod]
         public void ParseFileTests()
         {
-            var myfileProcessor = new FileProcessor("FileProcessorTestsspaceFile.txt");
-            var myData=myfileProcessor.ProcessFile();
-            
-            Assert.AreEqual(myData[2].FirstName, "pierce");
+            var myfileProcessor = new FileProcessor();            
+            myfileProcessor.AddFile("FileProcessorTestsspaceFile.txt");
+            myfileProcessor.AddFile("FileProcessorTestscommaFile.txt");
+            myfileProcessor.AddFile("FileProcessorTestspipeFile.txt");
+
+
+            Assert.AreEqual(myfileProcessor._dataList[2].FirstName, "pierce");
 
 
 

@@ -22,30 +22,32 @@ namespace _3FilesAssignment
     /// </summary>
     public class FileProcessor
     {
-        protected string FileName = "";
-        public char ParseCharacter;
-        private bool ParsingCharacterSet = false;
 
-        public FileProcessor(string fileName)
+        public List<UserData> _dataList = new List<UserData>();
+
+
+        public FileProcessor()
         {
-            FileName = fileName;
+            
         }
-
+        
         /// <summary>
         ///     this method trys to read the file with each of the possible parsing characters it stops once it can read all the
         ///     records from the file with
         ///     the assigned parsing character
         /// </summary>
-        public void DetermineParseCharacter()
+        public char DetermineParseCharacter(string fileName)
         {
             var testCharacters = new char[] {',', '|', ' '};
+            char selectedChar;
+
             foreach (var testchar in testCharacters)
             {
-                ParseCharacter = testchar;
-                if (IsFileValid())
+                selectedChar = testchar;
+                if (IsFileValid(fileName,testchar))
                 {
-                    ParsingCharacterSet = true;
-                    return;
+                    
+                    return testchar;
                 }
             }
             throw new Exception("File not in correct format.");
@@ -58,7 +60,7 @@ namespace _3FilesAssignment
         ///     it does not throw an error it just returns false if an error was encountered.
         /// </summary>
         /// <returns></returns>
-        private bool IsFileValid()
+        private bool IsFileValid(string FileName,char parseCharacter)
         {
             var isValid = true;
 
@@ -69,7 +71,7 @@ namespace _3FilesAssignment
                     string inputLine = "";
                     while ((inputLine = reader.ReadLine()) != null)
                     {
-                        if (!IsRecordValidWithParser(inputLine, ParseCharacter))
+                        if (!IsRecordValidWithParser(inputLine, parseCharacter))
                         {
                             isValid = false;
                             break;
@@ -90,21 +92,20 @@ namespace _3FilesAssignment
         /// a list containing instances of the data model reflecting what is in the file that was read as input
         ///  </summary>
         /// <returns> a data model userData containing a parsed representation of the file</returns>
-        public IList<UserData> ProcessFile()
+        public IList<UserData> AddFile(string fileName)
         {
-            if (!ParsingCharacterSet) DetermineParseCharacter();
-            var dataList = new List<UserData>();
+            var parseChar = DetermineParseCharacter(fileName);
 
-            using (var reader = new StreamReader(FileName))
+            using (var reader = new StreamReader(fileName))
             {
                 string inputLine = "";
                 while ((inputLine = reader.ReadLine()) != null)
                 {
-                    dataList.Add(ProcessLine(inputLine, ParseCharacter));
+                    _dataList.Add(ProcessLine(inputLine, parseChar));
                 }
             }
 
-            return dataList;
+            return _dataList;
         }
 
       

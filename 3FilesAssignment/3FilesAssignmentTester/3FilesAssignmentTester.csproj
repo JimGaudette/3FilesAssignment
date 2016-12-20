@@ -53,7 +53,6 @@
     <Compile Include="RESTProcessorTests.cs" />
     <Compile Include="OutputTests.cs" />
     <Compile Include="FileProcessorTests.cs" />
-    <Compile Include="UnitTest1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

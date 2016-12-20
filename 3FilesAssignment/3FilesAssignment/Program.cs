@@ -10,19 +10,26 @@ namespace _3FilesAssignment
     {
         static void Main(string[] args)
         {
-            if (args.Length == 0)
+            if (args.Length < 3)
             {
-                Console.WriteLine("You did not enter any arguments.  ");
+                Console.WriteLine("You did not enter enough arguments.  ");
                 Console.WriteLine("  This is what you should enter:");
-                Console.WriteLine("   3FilesAssignment <dataFile> ");
-                
+                Console.WriteLine("   3FilesAssignment <dataFile> <dataFile> <dataFile> ");
+                Console.WriteLine("please press return");
+                Console.ReadLine();
                 return;
             }
 
-            var myData = new FileProcessor(args[0]).ProcessFile();
+            var myProcessor= new FileProcessor();
+            myProcessor.AddFile(args[0]);
+            myProcessor.AddFile(args[1]);
+            myProcessor.AddFile(args[2]);
 
-            var outProcessor = new ConsoleOutputProcessor(myData);
+
+
+            var outProcessor = new ConsoleOutputProcessor(myProcessor._dataList);
             outProcessor.processOutput();
+            Console.WriteLine("please press return");
             Console.ReadLine();
 
 

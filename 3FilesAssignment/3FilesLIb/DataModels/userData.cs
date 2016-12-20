@@ -11,6 +11,9 @@ namespace _3FilesAssignment.DataModels
         public string LastName { get; set; }
         public string FirstName { get; set; }
         public string Gender { get; set; }
+        /// <summary>
+        /// this is a getter for lowercase gender for the rest API
+        /// </summary>
         public string gender
         {
             get
@@ -26,15 +29,20 @@ namespace _3FilesAssignment.DataModels
                 return DateTime.Parse(sDateOfBirth);
             }
         }
-
+        /// <summary>
+        /// this is a lower case implementation of the DateOFBirth method for the REST API
+        /// </summary>
         public DateTime birthdate
         {
             get
             {
-                return DateTime.Parse(sDateOfBirth);
+                return DateOfBirth;
             }
         }
 
+        /// <summary>
+        /// this is the lastname concatenated with the first name for use with the REST API
+        /// </summary>
         public string name
         {
             get

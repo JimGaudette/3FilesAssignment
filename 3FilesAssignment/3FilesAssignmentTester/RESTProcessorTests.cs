@@ -38,11 +38,16 @@ namespace _3FilesAssignmentTester
             File.Delete("RESTTestsspaceFile.txt");
             
         }
+        /// <summary>
+        /// this method tests the REST API implementation by adding a record through the REST POST and then performs a get ordering the records by birthdate
+        /// </summary>
         [TestMethod]
         public void RESTProcessorTests()
         {
-            var myData = new FileProcessor("RESTTestsspaceFile.txt").ProcessFile();
-            var restProcessor = new RESTProcessor(myData);
+            var myfileProcessor = new FileProcessor();
+            myfileProcessor.AddFile("RESTTestsspaceFile.txt");
+            
+            var restProcessor = new RESTProcessor(myfileProcessor._dataList);
 
             restProcessor.ProcessRESTString("POST /records 7gaudette DADDY male red 11/15/1971");
 

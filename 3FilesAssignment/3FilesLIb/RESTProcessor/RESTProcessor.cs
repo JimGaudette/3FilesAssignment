@@ -12,7 +12,10 @@ using Newtonsoft.Json;
 namespace _3FilesAssignment
 {
    
-
+    /// <summary>
+    /// This class provides the requested REST API functionality 
+    /// while it appears 
+    /// </summary>
     public class RESTProcessor
     {
         private IList<UserData> data;
@@ -37,9 +40,11 @@ namespace _3FilesAssignment
                 return "";
             }
 
-
+            //  the 13th character starting parse was decided as valid for now with limited implementation description.  If indeed it is to be limited to the requested implementation 
+            //  then there is not a need to further 
             //GET /records/
-            var fieldName = RESTString.Substring(13).ToLower();
+            const int GETSTARTPARSEINDEX = 13;
+            var fieldName = RESTString.Substring(GETSTARTPARSEINDEX).ToLower();
             rslt=get(fieldName);
 
 
@@ -55,7 +60,8 @@ namespace _3FilesAssignment
         private void post(string RESTString)
         {
             //POST /records
-            var inputRecord=RESTString.Substring(14);
+            const int POSTSTRINGSTARTINDEX = 14;
+            var inputRecord=RESTString.Substring(POSTSTRINGSTARTINDEX);
             var parseChars = new char[] { ',', '|', ' ' };
             var parseChar=' ';
 
@@ -73,12 +79,12 @@ namespace _3FilesAssignment
             
         }
 
-        public string get() {
+        private string get() {
 
             string json = JsonConvert.SerializeObject(data);
             return json;
         }
-        public string get(string sortFieldName) {
+        private string get(string sortFieldName) {
             var outdata = data.OrderBy(sortFieldName);
             
             string json = JsonConvert.SerializeObject(outdata);
