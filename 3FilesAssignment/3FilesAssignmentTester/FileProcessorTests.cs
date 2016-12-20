@@ -24,6 +24,7 @@ namespace _3FilesAssignmentTester
                 writer.WriteLine("gaudette james Male brown 04/25/1971");
                 writer.WriteLine("gaudette jimmy Male red 11/15/2012");
                 writer.WriteLine("gaudette pierce Male red 11/15/2012");
+                writer.WriteLine("gaudette kady female red 11/15/2012");
             }
 
             using (StreamWriter writer = File.CreateText("FileProcessorTestscommaFile.txt"))
@@ -31,6 +32,7 @@ namespace _3FilesAssignmentTester
                 writer.WriteLine("gaudette,james,Male,brown,04/25/1971");
                 writer.WriteLine("gaudette,jimmy,Male,red,11/15/2012");
                 writer.WriteLine("gaudette,pierce,Male,red,11/15/2012");
+                writer.WriteLine("gaudette,kady,female,red,11/15/2012");
             }
 
 
@@ -40,6 +42,7 @@ namespace _3FilesAssignmentTester
                 writer.WriteLine("gaudette|james|Male|brown|04/25/1971");
                 writer.WriteLine("gaudette|jimmy|Male|red|11/15/2012");
                 writer.WriteLine("gaudette|pierce|Male|red|11/15/2012");
+                writer.WriteLine("gaudette|kady|female|red|11/15/2012");
             }
 
         }

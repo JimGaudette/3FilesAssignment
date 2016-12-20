@@ -1,12 +1,11 @@
-﻿#region
-
+﻿
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using _3FilesAssignment.DataModels;
 
-#endregion
+
 
 namespace _3FilesAssignment
 {
@@ -137,7 +136,7 @@ namespace _3FilesAssignment
                 LastName = parts[0].Trim(),
                 Gender = parts[2].Trim(),
                 FavoriteColor = parts[3].Trim(),
-                DateOfBirth = parts[4].Trim()
+                sDateOfBirth = parts[4].Trim()
             };
             return userData;
         }
