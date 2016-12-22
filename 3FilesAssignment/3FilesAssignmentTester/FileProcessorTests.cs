@@ -78,7 +78,7 @@ namespace FilesAssignmentTester
         [TestMethod]
         public void ParseFileTests()
         {
-            var userDataRepo = UserDataRepository.Instance;
+            var userDataRepo = new UserDataRepository();
             userDataRepo.AddFile("FileProcessorTestsspaceFile.txt");
             userDataRepo.AddFile("FileProcessorTestscommaFile.txt");
             userDataRepo.AddFile("FileProcessorTestspipeFile.txt");

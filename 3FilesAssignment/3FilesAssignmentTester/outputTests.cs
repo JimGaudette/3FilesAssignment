@@ -60,7 +60,7 @@ namespace FilesAssignmentTester
         public void OutputConsoleTests()
         {
 
-            var userDataRepo = UserDataRepository.Instance;
+            var userDataRepo = new UserDataRepository();
             userDataRepo.AddFile("OutputTestsspaceFile.txt");
             userDataRepo.AddFile("OutputTestscommaFile.txt");
             userDataRepo.AddFile("OutputTestspipeFile.txt");
@@ -75,6 +75,9 @@ namespace FilesAssignmentTester
 
             
             Assert.AreEqual(out1Data[0].LastName, "ot14gaudette");
+            Assert.AreEqual(out1Data[0].FavoriteColor, "red");
+            Assert.AreEqual(out1Data[0].favoriteColor, "red");
+            Assert.AreEqual(out1Data[0].name, "ot14gaudette kady");
 
             // test for sorted by birthday 
             var out2Data = outProcessor.ArrangeDataforOutput2();

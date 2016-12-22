@@ -9,6 +9,11 @@ using System.Text;
 
 namespace FilesAssignmentService.DataModels
 {
+    /// <summary>
+    /// this is a separate implementation of the primary record.  The field names in the step 2 section differ and 
+    /// this class allows for those differences.  Also when querying by name it needs to sort by the concatenated last name first name
+    /// </summary>
+
     [DataContract]
     public class UserServiceData:UserData
     {

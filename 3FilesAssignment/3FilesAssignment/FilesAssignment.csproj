@@ -60,9 +60,6 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="readme.txt" />
-  </ItemGroup>
-  <ItemGroup>
     <ProjectReference Include="..\3FilesAssignmentService\FilesAssignmentService.csproj">
       <Project>{c00ac301-db6e-4dca-9374-69a098d24356}</Project>
       <Name>FilesAssignmentService</Name>

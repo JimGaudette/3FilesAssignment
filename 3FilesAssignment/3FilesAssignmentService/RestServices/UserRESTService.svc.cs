@@ -12,7 +12,11 @@ using FilesAssignmentService.Repositorys;
 
 namespace FilesAssignmentService.RestServices
 {
-
+    /// <summary>
+    /// this class provides the REST API methods of access.  The description asks that the get requests provide the ability
+    /// to specify sort field name on the requests.  The functionality for the dynamic sort based on parameter is provided by the 
+    /// dynamic linq package from nuget.
+    /// </summary>
     public class UserRESTService : IUserRESTService
     {
         public void AddRecord(string recordData)

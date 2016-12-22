@@ -138,6 +138,8 @@ namespace FilesAssignmentService.Repositorys
         /// <summary>
         /// this method takes a string as input and splits that string on the instances of the parsing character
         /// it creates an instances of the data model and places each of the parts split parts into the models data field
+        /// it allows a parse character to be passed if it is available for performance other wise the line will be evaluated 
+        /// and the parsing character will be determined.
         /// </summary>
         /// <param name="recordData"></param>
         /// <returns> a data model with the data fields containing the data obtained from the file</returns>
