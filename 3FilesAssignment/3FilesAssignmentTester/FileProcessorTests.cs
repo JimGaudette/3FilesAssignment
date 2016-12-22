@@ -1,10 +1,11 @@
 ﻿using System;
 using System.IO;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using _3FilesAssignment;
+using FilesAssignmentService.Repositorys;
+using FilesAssignment.OutputProcessor;
 
 
-namespace _3FilesAssignmentTester
+namespace FilesAssignmentTester
 {
     [TestClass]
     public class FileProcessorTests
@@ -58,17 +59,18 @@ namespace _3FilesAssignmentTester
         [TestMethod]
         public void ParseCharacterIdentificationTests()
         {
-            var myfileProcessor = new FileProcessor();
+            
+            var parseChar= FileProcessor.DetermineParseCharacter("FileProcessorTestsspaceFile.txt");
+            Assert.AreEqual(parseChar, " ");
 
-            var parseChar= myfileProcessor.DetermineParseCharacter("FileProcessorTestsspaceFile.txt");
-            Assert.AreEqual(parseChar, ' ');
+            parseChar = FileProcessor.DetermineParseCharacter("FileProcessorTestscommaFile.txt");
+            Assert.AreEqual(parseChar, ",");
 
-            parseChar = myfileProcessor.DetermineParseCharacter("FileProcessorTestscommaFile.txt");
-            Assert.AreEqual(parseChar, ',');
+            parseChar = FileProcessor.DetermineParseCharacter("FileProcessorTestspipeFile.txt");
+            Assert.AreEqual(parseChar, "|");
 
-            parseChar = myfileProcessor.DetermineParseCharacter("FileProcessorTestspipeFile.txt");
-            Assert.AreEqual(parseChar, '|');
-
+            parseChar = FileProcessor.DetermineParseCharacterforLine("FP3gaudette|kady|female|red|11/15/2012");
+            Assert.AreEqual(parseChar, "|");
 
         }
 
@@ -76,13 +78,14 @@ namespace _3FilesAssignmentTester
         [TestMethod]
         public void ParseFileTests()
         {
-            var myfileProcessor = new FileProcessor();            
-            myfileProcessor.AddFile("FileProcessorTestsspaceFile.txt");
-            myfileProcessor.AddFile("FileProcessorTestscommaFile.txt");
-            myfileProcessor.AddFile("FileProcessorTestspipeFile.txt");
+            var userDataRepo = UserDataRepository.Instance;
+            userDataRepo.AddFile("FileProcessorTestsspaceFile.txt");
+            userDataRepo.AddFile("FileProcessorTestscommaFile.txt");
+            userDataRepo.AddFile("FileProcessorTestspipeFile.txt");
 
 
-            Assert.AreEqual(myfileProcessor._dataList[2].FirstName, "pierce");
+            Assert.AreEqual("FP1gaudette", userDataRepo.userList[2].LastName);
+            Assert.AreEqual(12, userDataRepo.userList.Count);
 
 
 

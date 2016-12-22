@@ -3,8 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using FilesAssignmentService.Repositorys;
+using FilesAssignment.OutputProcessor;
 
-namespace _3FilesAssignment
+
+namespace FilesAssignment
 {
     class Program
     {
@@ -20,14 +23,14 @@ namespace _3FilesAssignment
                 return;
             }
 
-            var myProcessor= new FileProcessor();
-            myProcessor.AddFile(args[0]);
-            myProcessor.AddFile(args[1]);
-            myProcessor.AddFile(args[2]);
+            var userDataRepo= UserDataRepository.Instance;
+            userDataRepo.AddFile(args[0]);
+            userDataRepo.AddFile(args[1]);
+            userDataRepo.AddFile(args[2]);
 
 
 
-            var outProcessor = new ConsoleOutputProcessor(myProcessor._dataList);
+            var outProcessor = new ConsoleOutputProcessor(userDataRepo);
             outProcessor.processOutput();
             Console.WriteLine("please press return");
             Console.ReadLine();

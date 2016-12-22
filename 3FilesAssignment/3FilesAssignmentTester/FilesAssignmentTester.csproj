@@ -6,8 +6,8 @@
     <ProjectGuid>{B569086C-0E09-42DC-B19D-8B7EA0B5B588}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>_3FilesAssignmentTester</RootNamespace>
-    <AssemblyName>3FilesAssignmentTester</AssemblyName>
+    <RootNamespace>FilesAssignmentTester</RootNamespace>
+    <AssemblyName>FilesAssignmentTester</AssemblyName>
     <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -56,13 +56,13 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\3FilesAssignment\3FilesAssignment.csproj">
-      <Project>{0c6eca11-e469-43ea-b690-19cf53296cbc}</Project>
-      <Name>3FilesAssignment</Name>
+    <ProjectReference Include="..\3FilesAssignmentService\FilesAssignmentService.csproj">
+      <Project>{c00ac301-db6e-4dca-9374-69a098d24356}</Project>
+      <Name>FilesAssignmentService</Name>
     </ProjectReference>
-    <ProjectReference Include="..\3FilesLIb\3FilesLIb.csproj">
-      <Project>{fad9f6e6-b26e-4dd8-88aa-b89f8dfbabbc}</Project>
-      <Name>3FilesLIb</Name>
+    <ProjectReference Include="..\3FilesAssignment\FilesAssignment.csproj">
+      <Project>{0c6eca11-e469-43ea-b690-19cf53296cbc}</Project>
+      <Name>FilesAssignment</Name>
     </ProjectReference>
   </ItemGroup>
   <Choose>

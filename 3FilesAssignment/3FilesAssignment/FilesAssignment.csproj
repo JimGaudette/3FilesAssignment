@@ -7,8 +7,8 @@
     <ProjectGuid>{0C6ECA11-E469-43EA-B690-19CF53296CBC}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>_3FilesAssignment</RootNamespace>
-    <AssemblyName>3FilesAssignment</AssemblyName>
+    <RootNamespace>FilesAssignment</RootNamespace>
+    <AssemblyName>FilesAssignment</AssemblyName>
     <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -60,13 +60,13 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\3FilesLIb\3FilesLIb.csproj">
-      <Project>{fad9f6e6-b26e-4dd8-88aa-b89f8dfbabbc}</Project>
-      <Name>3FilesLIb</Name>
-    </ProjectReference>
+    <Content Include="readme.txt" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="readme.txt" />
+    <ProjectReference Include="..\3FilesAssignmentService\FilesAssignmentService.csproj">
+      <Project>{c00ac301-db6e-4dca-9374-69a098d24356}</Project>
+      <Name>FilesAssignmentService</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

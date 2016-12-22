@@ -1,10 +1,11 @@
 ﻿using System;
 using System.IO;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using _3FilesAssignment;
+using FilesAssignmentService.Repositorys;
+using FilesAssignment.OutputProcessor;
 
 
-namespace _3FilesAssignmentTester
+namespace FilesAssignmentTester
 {
     [TestClass]
     public class OutputTests
@@ -58,15 +59,18 @@ namespace _3FilesAssignmentTester
         [TestMethod]
         public void OutputConsoleTests()
         {
-            var myfileProcessor = new FileProcessor();
-            myfileProcessor.AddFile("OutputTestsspaceFile.txt");
-            myfileProcessor.AddFile("OutputTestscommaFile.txt");
-            myfileProcessor.AddFile("OutputTestspipeFile.txt");
+
+            var userDataRepo = UserDataRepository.Instance;
+            userDataRepo.AddFile("OutputTestsspaceFile.txt");
+            userDataRepo.AddFile("OutputTestscommaFile.txt");
+            userDataRepo.AddFile("OutputTestspipeFile.txt");
 
 
-            var outProcessor = new ConsoleOutputProcessor(myfileProcessor._dataList);
 
-            // test for females first and last name acending
+
+            var outProcessor = new ConsoleOutputProcessor(userDataRepo);
+
+            // test for females first and last name ascending
             var out1Data=outProcessor.ArrangeDataforOutput1();
 
             
